@@ -20,7 +20,8 @@ interface Props {
 export default function UpdateProfileInformationForm({ user }: Props) {
   const form = useForm({
     _method: 'PUT',
-    name: user.name,
+    firstname: user.firstname,
+    lastname: user.lastname,
     email: user.email,
     photo: null as File | null,
   });
@@ -128,7 +129,7 @@ export default function UpdateProfileInformationForm({ user }: Props) {
             <div className="mt-2">
               <img
                 src={user.profile_photo_url}
-                alt={user.name}
+                alt={`${user.firstname} ${user.lastname}`}
                 className="rounded-full h-20 w-20 object-cover"
               />
             </div>
@@ -158,18 +159,30 @@ export default function UpdateProfileInformationForm({ user }: Props) {
 
       {/* <!-- Name --> */}
       <div className="col-span-6 sm:col-span-4">
-        <InputLabel htmlFor="name" value="Name" />
+        <InputLabel htmlFor="firstname" value="First Name" />
         <TextInput
-          id="name"
+          id="firstname"
           type="text"
           className="mt-1 block w-full"
-          value={form.data.name}
-          onChange={e => form.setData('name', e.currentTarget.value)}
+          value={form.data.firstname}
+          onChange={e => form.setData('firstname', e.currentTarget.value)}
           autoComplete="name"
         />
-        <InputError message={form.errors.name} className="mt-2" />
+        <InputError message={form.errors.firstname} className="mt-2" />
       </div>
 
+      <div className="col-span-6 sm:col-span-4">
+        <InputLabel htmlFor="lastname" value="Last Name" />
+        <TextInput
+          id="lastname"
+          type="text"
+          className="mt-1 block w-full"
+          value={form.data.lastname}
+          onChange={e => form.setData('lastname', e.currentTarget.value)}
+          autoComplete="name"
+        />
+        <InputError message={form.errors.lastname} className="mt-2" />
+      </div>
       {/* <!-- Email --> */}
       <div className="col-span-6 sm:col-span-4">
         <InputLabel htmlFor="email" value="Email" />

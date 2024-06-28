@@ -8,7 +8,7 @@ export default function Dashboard() {
       title="Dashboard"
       renderHeader={() => (
         <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-          Dashboardy
+          Dashboard
         </h2>
       )}
     >
